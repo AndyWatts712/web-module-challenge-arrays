@@ -145,8 +145,8 @@ and should return a new array that is identical to the old array. You can name t
 
 function copy(originalFlavors, copyOriginalFlavors) {
 
-    copyOriginalFlavors = originalFlavors
-    console.log(copyOriginalFlavors)
+    copyOriginalFlavors = [...originalFlavors];
+    console.log(copyOriginalFlavors);
 
 }
 
@@ -168,8 +168,8 @@ DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem.
 
 hint - you can use the .includes method to help you solve this */
 
-const foundFlavors = [];
 function filterByWord(originalFlavors, findFlavor) {
+    const foundFlavors = [];
 
     for (i = 0; i < originalFlavors.length; i++) {
         if (originalFlavors[i].includes(findFlavor)) {
@@ -196,14 +196,14 @@ and should return the average number of words per item in the array.
 
 For example, getAverageWordLength(originalFlavors) should return a number between 0 and 3. */
 
-let wordLength = 0
 function getAverageWordLength(originalFlavors) {
-let sum = 0
-    for (i=0; i < originalFlavors.length; i++) {
+    let wordLength = 0
+    let sum = 0
+    for (i = 0; i < originalFlavors.length; i++) {
         wordLength = originalFlavors[i].split(" ").length;
         sum = sum + wordLength;
     }
-    console.log(sum/(originalFlavors.length + 1));
+    console.log(sum / (originalFlavors.length + 1));
 }
 getAverageWordLength(originalFlavors);
 
@@ -290,7 +290,7 @@ var regionalFlavors = ["Pink Bubblegum",
     "Caramel 'n' Cookies"]
 
 function getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors) {
-    let random31Flavors =[];
+    let random31Flavors = [];
     let allFlavors = [];
 
     // Combine all flavors into one array, allFlavors
@@ -312,9 +312,9 @@ function getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regional
 
     // Pick random items from allFlavors and push them to random31Flavors
     for (i = 0; i < 31; i++) {
-       let random = Math.floor(Math.random() * allFlavors.length);
-       
-       random31Flavors.push(allFlavors[random]);
+        let random = Math.floor(Math.random() * allFlavors.length);
+
+        random31Flavors.push(allFlavors[random]);
     }
     console.log(random31Flavors);
 }

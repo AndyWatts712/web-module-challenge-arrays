@@ -168,20 +168,19 @@ DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem.
 
 hint - you can use the .includes method to help you solve this */
 
+const foundFlavors = [];
 function filterByWord(originalFlavors, findFlavor) {
 
     for (i = 0; i < originalFlavors.length; i++) {
-        let foundFlavors = "";
         if (originalFlavors[i].includes(findFlavor)) {
-            console.log("Yay");
             foundFlavors.push(originalFlavors[i]);
-
         }
     }
-    return foundFlavors;
+    console.log(foundFlavors);
 }
-filterByWord(originalFlavors, "Chocolate");
-console.log(foundFlavors);
+filterByWord(originalFlavors, "Lemon");
+
+
 
 
 
@@ -197,11 +196,16 @@ and should return the average number of words per item in the array.
 
 For example, getAverageWordLength(originalFlavors) should return a number between 0 and 3. */
 
-function getAverageWordLength(/*code here*/) {
-
-    /*code here*/
-
+let wordLength = 0
+function getAverageWordLength(originalFlavors) {
+let sum = 0
+    for (i=0; i < originalFlavors.length; i++) {
+        wordLength = originalFlavors[i].split(" ").length;
+        sum = sum + wordLength;
+    }
+    console.log(sum/(originalFlavors.length + 1));
 }
+getAverageWordLength(originalFlavors);
 
 
 /* STRETCH 2: Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors. Write a function that will randomly select a total of 31 flavors from originalFlavors, currentFlavors, seasonalFlavors, and regionalFlavors.
@@ -285,8 +289,33 @@ var regionalFlavors = ["Pink Bubblegum",
     "Chocolate Chocolate Chip Cheesecake",
     "Caramel 'n' Cookies"]
 
-function getRandomFlavors(/*code here*/) {
+function getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors) {
+    let random31Flavors =[];
+    let allFlavors = [];
 
-    /*code here*/
+    // Combine all flavors into one array, allFlavors
+    for (i = 0; i < originalFlavors.length; i++) {
+        allFlavors.push(originalFlavors[i]);
+    }
 
+    for (i = 0; i < newFlavors.length; i++) {
+        allFlavors.push(newFlavors[i]);
+    }
+
+    for (i = 0; i < seasonalFlavors.length; i++) {
+        allFlavors.push(seasonalFlavors[i]);
+    }
+
+    for (i = 0; i < regionalFlavors.length; i++) {
+        allFlavors.push(regionalFlavors[i]);
+    }
+
+    // Pick random items from allFlavors and push them to random31Flavors
+    for (i = 0; i < 31; i++) {
+       let random = Math.floor(Math.random() * allFlavors.length);
+       
+       random31Flavors.push(allFlavors[random]);
+    }
+    console.log(random31Flavors);
 }
+getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors);
